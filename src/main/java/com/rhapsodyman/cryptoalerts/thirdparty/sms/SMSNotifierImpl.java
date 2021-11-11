@@ -22,15 +22,6 @@ public class SMSNotifierImpl implements ISMSNotifier {
     }
 
 
-//    public static void main(String[] args) {
-//
-//        SMSNotifierImpl smsNotifier = new SMSNotifierImpl("+15344290911", "+37367720312", "ACbc5dd7b97416597504046b6d6a954f2e",
-//                "02dfc06ba949066453ff2aed668c4dab");
-//
-//        smsNotifier.sendSMSNotification("Messsage text");
-//
-//    }
-
     @Override
     public void sendSMSNotification(String to, String message) {
         System.out.println(String.format("Sending SMS notification to %s with content %s", to, message));
