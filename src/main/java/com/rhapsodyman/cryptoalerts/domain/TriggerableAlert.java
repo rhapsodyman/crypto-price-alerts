@@ -92,6 +92,7 @@ public class TriggerableAlert {
         return "TriggerableAlert{" +
                 "symbol='" + symbol + '\'' +
                 ", operator=" + operator +
+                ", targetValue=" + targetValue +
                 ", triggeredValue='" + triggeredValue + '\'' +
                 '}';
     }
@@ -110,5 +111,10 @@ public class TriggerableAlert {
 
     public void setTriggeredValue(String triggeredValue) {
         this.triggeredValue = triggeredValue;
+    }
+
+
+    public AlertDescription getAlertDescription(){
+        return new AlertDescription(this.symbol, this.operator, this.targetValue);
     }
 }

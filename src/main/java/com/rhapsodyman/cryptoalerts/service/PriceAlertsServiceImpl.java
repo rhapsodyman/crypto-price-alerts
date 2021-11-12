@@ -67,11 +67,11 @@ public class PriceAlertsServiceImpl implements IPriceAlertsService {
     }
 
     @Override
-    public void triggerAlert(long id, String value) {
+    public TriggerableAlert triggerAlert(long id, String value) {
         TriggerableAlert alert = findById(id).get();
         alert.setWasTriggered(true);
         alert.setTriggeredValue(value);
-        alertsRepository.save(alert);
+        return alertsRepository.saveAndFlush(alert);
     }
 
     @Override

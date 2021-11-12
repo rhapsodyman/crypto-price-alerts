@@ -6,6 +6,7 @@ import com.rhapsodyman.cryptoalerts.domain.TriggerableAlert;
 import com.rhapsodyman.cryptoalerts.security.services.UserDetailsImpl;
 import com.rhapsodyman.cryptoalerts.service.IPriceAlertsService;
 import com.rhapsodyman.cryptoalerts.service.IUsersService;
+import com.rhapsodyman.cryptoalerts.thirdparty.quotes.IQuotesProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,9 @@ public class PriceAlertsController {
 
     @Autowired
     IUsersService usersService;
+
+    @Autowired
+    IQuotesProvider quotesProvider;
 
 
     @GetMapping("/alerts")
@@ -87,6 +91,18 @@ public class PriceAlertsController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/alerts/{id}").buildAndExpand(id).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+    }
+
+
+    @GetMapping("/crypto/isValid")
+    public ResponseEntity<String> isValidCrypto(@RequestParam(name = "symbol") String symbol) {
+        try {
+            quotesProvider.getCryptoPrice(symbol);
+            return new ResponseEntity<String>("Valid", HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<String>("Invalid", HttpStatus.OK);
+        }
     }
 
 

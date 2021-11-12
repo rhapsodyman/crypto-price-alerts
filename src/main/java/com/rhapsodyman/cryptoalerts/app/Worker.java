@@ -36,15 +36,16 @@ public class Worker implements Runnable {
             return;
         }
 
-        String alertMessage = "Alert triggered:  " + alert.toString() + "\nCurrent price is: " + cryptoPrice.toString();
+
 
         if (
                 (alert.getOperator() == PriceOperator.LESS_THAN && cryptoPrice.compareTo(new BigDecimal(alert.getTargetValue())) < 0)
                         || (alert.getOperator() == PriceOperator.GREATER_THAN && cryptoPrice.compareTo(new BigDecimal(alert.getTargetValue())) > 0)
         ) {
 
-            notifier.sendSMSNotification(alert.getOwner().getPhone(), alertMessage);
-            priceAlertsService.triggerAlert(alert.getId(), cryptoPrice.toString());
+            TriggerableAlert triggeredAlert = priceAlertsService.triggerAlert(alert.getId(), cryptoPrice.toString());
+            String alertMessage = "Alert triggered:  " + triggeredAlert.toString();
+            notifier.sendSMSNotification(triggeredAlert.getOwner().getPhone(), alertMessage);
         }
     }
 }

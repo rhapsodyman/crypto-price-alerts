@@ -1,6 +1,5 @@
 package com.rhapsodyman.cryptoalerts.service;
 
-import com.rhapsodyman.cryptoalerts.domain.AlertDescription;
 import com.rhapsodyman.cryptoalerts.domain.TriggerableAlert;
 
 import java.util.List;
@@ -14,7 +13,7 @@ public interface IPriceAlertsService {
 
     Optional<TriggerableAlert> findById(long id);
 
-    void triggerAlert(long id, String value);
+    TriggerableAlert triggerAlert(long id, String value);
 
     void deleteAlertById(long id);
 
