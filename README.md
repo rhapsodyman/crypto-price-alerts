@@ -42,6 +42,10 @@ quotes.apiKey=<api key> # get it from coinmarketcap API
 ```
 
 
+### API port
+If you want to change API port of Spring boot in ```application.properties``` file, 
+do not forget to also change it in the   ```.env.development``` file
+
 ### Swagger
 Swagger will be available on http://localhost:9000/swagger-ui/index.html
 
