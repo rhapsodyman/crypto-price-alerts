@@ -24,6 +24,8 @@ This project uses H2 database - and after ```Application```.java is started you 
 INSERT INTO roles(name) VALUES('USER');
 ```
 
+H2 UI console will be available at: http://localhost:9000/h2-console
+
 
 We are using Twilio to be able to send SMS messages and Coinmarketcap API to get quotes
 See below APIs
