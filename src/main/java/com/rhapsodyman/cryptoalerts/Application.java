@@ -7,9 +7,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer {
-    // Swagger   (http://localhost:9000/swagger-ui.html)
-    // https://springframework.guru/spring-boot-restful-api-documentation-with-swagger-2/
-    //	https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
+
+    // Swagger
+        // http://localhost:9000/swagger-ui/index.html
 
 
     // Deploy to tomcat

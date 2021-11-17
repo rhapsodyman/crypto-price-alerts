@@ -23,8 +23,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("priceAlerts")
-//@CrossOrigin(origins = "*")
-@CrossOrigin(origins = "*", maxAge = 3600)
+//@CrossOrigin(origins = "*", maxAge = 3600)
 public class PriceAlertsController {
 
     @Autowired
